@@ -6,6 +6,8 @@ modules:
         - PhpBrowser
     config:
         PhpBrowser:
-            url: 'https://youtube.com'
-    #            cookies:
-    #                cookie-1:
+            url: 'http://localhost/newApp'
+            cookies:
+                cookie-1:
+                    Name: test
+                    Value: seo
