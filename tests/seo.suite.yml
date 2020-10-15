@@ -1,0 +1,11 @@
+actor: SeoTester
+modules:
+    enabled:
+        - Asserts
+        - \Helper\Seo
+        - PhpBrowser
+    config:
+        PhpBrowser:
+            url: 'https://youtube.com'
+    #            cookies:
+    #                cookie-1:

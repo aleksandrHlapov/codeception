@@ -12,5 +12,4 @@ modules:
     config:
         WebDriver:
             browser: chrome
-#             url: 'https://yandex.ru'
             url: 'https://youtube.com'
