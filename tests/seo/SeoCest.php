@@ -8,13 +8,15 @@ class SeoCest {
      * @param SeoTester $i
      * @param Example $example
      */
-    public function csv(SeoTester $i, Example $example) {
+    public function checkSeoData(SeoTester $i, Example $example) {
         $i->amOnPage($example['url']);
+
+        $expected = array('title'=>$example['title'], 'metaDescription'=>$example['metaDescription']);
         $actualSeoData = array(
             'title'=>$i->grabTextFrom('//title'),
             'metaDescription'=>$i->grabAttributeFrom('//meta[@name=\'description\']', 'content')
         );
-        $expected = array('title'=>$example['title'], 'metaDescription'=>$example['metaDescription']);
+
         $i->assertEqualsCanonicalizing($expected, $actualSeoData, $example['url']);
     }
 
