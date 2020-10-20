@@ -2,5 +2,5 @@
 namespace Page;
 
 class SearchFormPage {
-    public static $inputField = 'input#search';
+	public static $inputField = 'input#search';
 }

@@ -7,10 +7,8 @@ namespace _generated;
 
 trait FunctionalTesterActions
 {
-    /**
-     * @return \Codeception\Scenario
-     */
-    abstract protected function getScenario();
-
-    
+	/**
+	 * @return \Codeception\Scenario
+	 */
+	abstract protected function getScenario();
 }

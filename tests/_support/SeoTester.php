@@ -15,12 +15,12 @@
  * @method void pause()
  *
  * @SuppressWarnings(PHPMD)
-*/
+ */
 class SeoTester extends \Codeception\Actor
 {
-    use _generated\SeoTesterActions;
+	use _generated\SeoTesterActions;
 
-    /**
-     * Define custom actions here
-     */
+	/**
+	 * Define custom actions here
+	 */
 }

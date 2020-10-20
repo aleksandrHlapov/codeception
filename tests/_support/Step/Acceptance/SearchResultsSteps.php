@@ -2,18 +2,18 @@
 namespace Step\Acceptance;
 
 use Page\SearchResultPage;
-use SebastianBergmann\Template\RuntimeException;
 
 class SearchResultsSteps extends \AcceptanceTester {
-    public function checkPreviewExist($intVideoPosition) {
+	public function checkPlayButtonDisplayed($intVideoPosition) {
+        $searchResultPage = $this->setVideoPosition($intVideoPosition);
+        $this->waitForElementVisible($searchResultPage -> getNewVideoOnChannelByPosition());
+        $this->moveMouseOver($searchResultPage -> getNewVideoOnChannelByPositionMouseOverlay());
+        $this->waitForElementVisible($searchResultPage -> getNewVideoOnChannelByPositionPlayIcon());
+	}
+
+    private function setVideoPosition($intVideoPosition) {
         $searchResultPage = new SearchResultPage();
-        $searchResultPage -> setIntVideoPosition(2);
-        try {
-            $this->waitForElementVisible($searchResultPage -> getNewVideoOnChannelByPosition());
-            $this->moveMouseOver($searchResultPage -> getNewVideoOnChannelByPositionMouseOverlay());
-            $this->waitForElementVisible($searchResultPage -> getNewVideoOnChannelByPositionPlayIcon());
-        } catch (\Exception $e) {
-            throw new RuntimeException($e);
-        }
+        $searchResultPage->setIntVideoPosition($intVideoPosition);
+        return $searchResultPage;
     }
 }

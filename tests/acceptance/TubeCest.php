@@ -5,17 +5,21 @@ use Step\Acceptance\SearchFormSteps;
 use Step\Acceptance\SearchResultsSteps;
 
 class TubeCest {
-    public function _before(AcceptanceTester $i) {}
+	// tests
+	public function shouldSeePreviewEnd(AcceptanceTester $i, Scenario $scenario) {
+		$i->wantTo('test is preview available');
+		$i->amOnPage('/');
+		$this->lookFor('nice job', $scenario);
+		$this->shouldSeePlayButton(2, $scenario);
+	}
 
-    // tests
-    public function videoShouldHavePreview(AcceptanceTester $i, Scenario $scenario) {
-        $i->wantTo('test is preview available');
-        $i->amOnPage('/');
+	private function lookFor($term, Scenario $scenario) {
+		$useSearchFormTo = new SearchFormSteps($scenario);
+		$useSearchFormTo->lookFor($term);
+	}
 
-        $useSearchFormTo = new SearchFormSteps($scenario);
-    	$useSearchFormTo->lookFor('nice job');
-
-    	$useSearchResultTo = new SearchResultsSteps($scenario);
-    	$useSearchResultTo->checkPreviewExist(2);
-    }
+	private function shouldSeePlayButton($videoNumber, Scenario $scenario) {
+		$useSearchResultTo = new SearchResultsSteps($scenario);
+		$useSearchResultTo->checkPlayButtonDisplayed($videoNumber);
+	}
 }
